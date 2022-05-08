@@ -1,9 +1,11 @@
 import React from 'react'
 import './Header.css'
-import  {FaSearch, FaShoppingBag} from 'react-icons/fa'
+import { BrowserRouter, Link, Route, Routes, Outlet } from 'react-router-dom';
+import  {FaSearch, FaShoppingBag } from 'react-icons/fa'
 import { useStateValue } from './StateProvider'
+import Checkout from './Checkout'
 export default function Header() {
-    const [ state, dispatch] = useStateValue();
+    // const [ state, dispatch] = useStateValue();
     return (
     <div className='header'>
         <img src='https://baibai365.com/wp-content/uploads/2022/02/cropped-Hotel-360.png' className='header__logo' alt='logo'/>
@@ -37,13 +39,14 @@ export default function Header() {
                 </span>
             </div>
             <div className='header__optionBasket'>
+                
                 <FaShoppingBag/>
                 <span className='header__optionLIneTwo header__optionBasketCount'>
-                    {basket?.length}
+                    {/* {basket?.length} */}
                 </span>
             </div>
         </div>
 
     </div>
-  )
+  );
 }

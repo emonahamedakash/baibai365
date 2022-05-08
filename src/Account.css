@@ -1,0 +1,35 @@
+.accountPage{
+    min-height: 80vh;
+    text-align: center;
+    vertical-align: center;
+    
+    
+}
+
+.login{
+    margin-top: 100px;
+    border-right: 1px solid black;
+    
+}
+
+.register{
+    margin-top: 100px;
+}
+
+.inputField{
+    padding: 15px;
+    width: 60%;
+    background-color: rgb(239, 236, 236);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    border-radius: 7px;
+}
+.inputField:hover{
+    background-color: rgb(186, 225, 186);
+}
+.rememberMe{
+    display: inline;
+    margin-right: 5px;
+}

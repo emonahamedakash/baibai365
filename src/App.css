@@ -1,0 +1,18 @@
+.navList{
+    margin-right: 10px;
+  }
+  
+  .navLink{
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+  }
+  .navbar{
+    list-style-type: none; 
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  }
+  .navLink:hover{
+    border-bottom: 2px solid #5960CA;
+    
+  }

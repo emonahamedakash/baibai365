@@ -1,10 +1,10 @@
 import React from 'react'
-import CategoriesDesign from './CategoriesDesign'
+import MainCategory from './MainCategory'
 
 const Electronics = () => {
   return (
     <div >
-        <CategoriesDesign/>
+        <MainCategory/>
     </div>
   )
 }

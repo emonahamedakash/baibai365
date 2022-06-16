@@ -1,39 +1,23 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Product.css'
-import { useStateValue } from './StateProvider'
-export default function Product({ id, title, image, price, rating}) {
-        // const [{basket}, dispatch] = useStateValue();
-
-        // console.log('This is the basket', basket)
-
-        // const addToBasket = () => {
-        //     dispatch({
-        //         type: 'ADD_TO_BASKET',
-        //         item:{
-        //             id: id,
-        //             title: title,
-        //             image: image,
-        //             price: price,
-        //             rating: rating,
-        //         },
-        //     });
-        // }
+export default function Product(props) {
     return (
     <div className='product'>
-        <div className='product__info'>
-            <p>{title}</p>
-            <p className='product__price'>
+        <Link to="/productdetails">
+            <img src={props.image} className='productCardImage'/>
+        </Link>
+        <div>
+            <p className='productTitle'>{props.title}</p>
+            <p>
                 <small>$</small>
-                <strong>{price}</strong>
+                <strong>{props.price}</strong>
             </p>
             <div className='product__rating'>
-                {/* {Array(rating).fill().map((_, i) =>(
-                    <p>*</p>
-                ))} */}
+
             </div>
         </div>
-        <img src={image} alt=''/>
-        <button onClick=''>Add to Basket</button>
+        <button onClick=''>Add to Cart</button>
     </div>
   )
 }

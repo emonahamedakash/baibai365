@@ -1,15 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './Checkout.css'
-import Header from './Header'
-import Subtotal from './Subtotal'
-
 export default function Checkout() {
-      let quantity = 1;
+
   return (
     <div>
-      <div className='checkout'>
+      <div className='checkout container'>
           <div className='row'>
-            <div className='col-8'>
+            <div className='col-md-8'>
               <div className='cartItemList'>
                 <div className='cartLogo'>
                   <img src='https://internetfusion.imgix.net/1609646.jpg?auto=format,compress&cs=srgb&fit=fill&fill=solid&w=120&h=120&dpr=1' alt='logo'/>
@@ -79,18 +76,18 @@ export default function Checkout() {
                 </div>
               </div>
             </div>
-            <div className='col-4'>
+            <div className='col-md-4'>
               <div className='total'>
                 <div className='checkoutSubtotal'>
                   <div className='row'>
-                  <div className='col-9'><p>Sub-total</p></div>
-                  <div className='col-2'>£68.95</div>
+                  <div className='col-md-9'><p>Sub-total</p></div>
+                  <div className='col-md-2'>£68.95</div>
                   </div>
                 </div>
                   <div className='checkoutTotal'>
                     <div className='row'>
-                    <div className='col-9'><p>Total Cost</p></div>
-                    <div className='col-2'>£68.95</div>
+                    <div className='col-md-9'><p>Total Cost</p></div>
+                    <div className='col-md-2'>£68.95</div>
                   </div>
                 </div>
                 <button className='btn btn-primary w-100 mt-5 mb-2'>PROCEED TO CHECKOUT</button>

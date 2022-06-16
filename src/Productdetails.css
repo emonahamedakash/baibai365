@@ -10,8 +10,9 @@
 .subImage{
     display: flex;
     flex-direction: column;
-    padding: 5px;
+
 }
+
 .subImageTag{
     width: 100px;
     margin-bottom: 8px;
@@ -22,40 +23,5 @@
     height: 350px;
     
 }
-.colorBtn{
-    margin-right: 5px;
-    margin-bottom: 10px;
-    border: none;
-    padding: 10px;
-}
-.colorBtn:hover{
-    border: 1px solid black;
-}
-.capacityBtn{
-    margin-right: 5px;
-    margin-bottom: 10px;
-    border: none;
-    padding: 10px;
-}
-.capacityBtn:hover{
-    border: 1px solid black;
-}
 
-.productDelivery{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding: 40px;
-    
-}
 
-.productTitleMiddlePart{
-    background-color: #FAFAFA;
-    padding: 5px;
-}
-p{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.relatedProduct{
-    display: flex;
-    background-color: #EAEDED;
-}

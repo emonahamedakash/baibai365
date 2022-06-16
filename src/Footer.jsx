@@ -6,7 +6,7 @@ export default function Footer() {
     <div className='footer container-fluid'>
         <div className='footerMain'>
             <div className='row justify-content-md-center'>
-                <div className='col-3'>
+                <div className='col-md-3'>
                     <h3>
                         Offline Store
                     </h3><hr/>
@@ -17,7 +17,7 @@ export default function Footer() {
                     Cell2. : 080 3311 0101<br/>
                     </p>
                 </div>
-                <div className='col-3'>
+                <div className='col-md-3'>
                     <h3>
                         Statistics
                     </h3><hr/>
@@ -31,7 +31,7 @@ export default function Footer() {
                     Total Page Views: 6,761<br/>
                     </p>
                 </div>
-                <div className='col-3'>
+                <div className='col-md-3'>
                     <h3>
                         Contact Details
                     </h3><hr/>
@@ -42,7 +42,7 @@ export default function Footer() {
                     Cell : 080 4170 1199<br/>
                     </p>
                 </div>
-                <div className='col-3'>
+                <div className='col-md-3'>
                     <h3>
                         Our Mobile App
                     </h3><hr/>

@@ -1,0 +1,11 @@
+.cartContainer{
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.cartImg{
+    height: 150px;
+    width: auto;
+}
+.cartItemList{
+    border-radius: 10px;
+}

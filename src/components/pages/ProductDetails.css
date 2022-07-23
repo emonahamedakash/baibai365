@@ -1,0 +1,42 @@
+.upperPart{
+    display: flex;
+    background-color: white;
+}
+.productImages{
+    display: flex;
+    gap: .25rem;
+}
+.subImage{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.subImageTag{
+    width: 100px;
+    height: 80px;
+}
+.subImageButton{
+    outline: none !important;
+}
+.subImageButton:focus{
+    outline: none !important;
+}
+.productImageTag{
+    width: 400px;
+    height: 350px;
+}
+.clrbtn{
+    margin-right: 10px;
+}
+.cpbtn{
+    margin-right: 10px;
+}
+.bottomPart{
+    background-color: #EAEDED;
+    padding-bottom: 40px;
+}
+.relatedProducts{
+    justify-content: center;
+    text-align: center !important;
+}

@@ -1,0 +1,20 @@
+.category{
+    margin: 10px;
+}
+.categoryCard{
+    border-radius: 1rem;
+    text-align: center;
+    padding: 5px 5px;
+    margin: 5px 5px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.categoryLink{
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+.categoryLink:hover{
+    color: orange;
+}
+.categoryImg{
+    max-width: 125px;
+}

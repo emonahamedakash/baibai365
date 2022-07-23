@@ -1,0 +1,1 @@
+export const BASE_URL = "http://52.199.215.23:8080/backend";

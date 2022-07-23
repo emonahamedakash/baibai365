@@ -1,0 +1,15 @@
+.products{
+    display: flex;
+    background-color: #EAEDED;
+}
+.list{
+    list-style-type: none;
+    margin-left: 0px;
+}
+.link{
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+.link:hover{
+    color: orange;
+}

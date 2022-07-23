@@ -1,0 +1,16 @@
+.profile{
+    min-height: 80vh;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 15px;
+    
+}
+.profile > ul li{
+    list-style: none;
+}
+.profile > ul li a{
+    text-decoration: none;
+    font-size: 20px;
+}
+.profile > ul li a:hover{
+    border-bottom: 2px solid rgb(10, 29, 246);
+}

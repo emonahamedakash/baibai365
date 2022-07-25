@@ -25,7 +25,7 @@ export const Profile = () => {
     }, []);
 
     const fetchUsers = async ()=> {
-        await axios.get(`${BASE_URL}/api/v1/user/list`, {
+        await axios.get(`${BASE_URL}/api/v1/user`, {
             params: {
                 "access_token": localStorage.getItem("accessToken")
             }
@@ -50,30 +50,30 @@ export const Profile = () => {
                     <h3>Hello, {user.username}</h3>
                     )
                 } */}
-                <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
+                <Tab.Container id="list-group-tabs-example" defaultActiveKey="#edit-profile">
                     <Row>
                         <Col sm={3}>
                         <ListGroup>
-                            <ListGroup.Item action href="#link1">
+                            <ListGroup.Item action href="#edit-profile">
                             Edit Profile
                             </ListGroup.Item>
-                            <ListGroup.Item action href="#link2">
+                            <ListGroup.Item action href="#orders">
                             Orders
                             </ListGroup.Item>
-                            <ListGroup.Item action href="#link3">
+                            <ListGroup.Item action href="#wallet">
                             Wallet
                             </ListGroup.Item>
                         </ListGroup>
                         </Col>
                         <Col sm={9}>
                         <Tab.Content>
-                            <Tab.Pane eventKey="#link1">
+                            <Tab.Pane eventKey="#edit-profile">
                             <EditProfile/>
                             </Tab.Pane>
-                            <Tab.Pane eventKey="#link2">
+                            <Tab.Pane eventKey="#orders">
                             <Orders/>
                             </Tab.Pane>
-                            <Tab.Pane eventKey="#link3">
+                            <Tab.Pane eventKey="#wallet">
                             <Wallet/>
                             </Tab.Pane>
                         </Tab.Content>

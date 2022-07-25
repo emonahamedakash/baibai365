@@ -1,5 +1,5 @@
 .product-container{
-    max-width: 240px;
+    width: 240px;
     height: 340px;
     padding: 15px;
     background-color: white;
@@ -24,12 +24,16 @@
     cursor: pointer;
 }
 .productTitle{
-    /* font-family: Arial, Helvetica, sans-serif; */
+    width:220px ;
     font-family: "Roboto", sans-serif;
     font-size: 18px;
     line-height: 18px;
     word-spacing: 0px;
     font-weight: 400;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
 }
 .price{
     font-size: 18px;

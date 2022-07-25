@@ -38,9 +38,9 @@ function App() {
             </Route>
                 <Route path="/secure" element={<PrivateOutlet/>}>
                 <Route path="/secure/checkout" element={<Checkout />} />
-                <Route path="/secure/register" element={<Register />} />
+
                 <Route path="/secure/profile" element={<Profile />} />
-                <Route path="/secure/profile/editprofile" element={<EditProfile />} />
+                <Route path="/secure/profile/edit-profile" element={<EditProfile />} />
 
             </Route>
 
@@ -71,6 +71,7 @@ function App() {
             <Route path="cart" element={<Cart />} />
             <Route path="wishlist" element={<Wishlist />} />
             <Route path="error" element={<Error/>} />
+            <Route path="/register" element={<Register />} />
           </Routes>
           {/*<---Other Link Routs End--->*/}
           <Footer/>

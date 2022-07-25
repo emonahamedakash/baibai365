@@ -1,9 +1,9 @@
 import {createContext, useContext, useEffect, useMemo, useState} from 'react';
 import axios from 'axios';
-import {CircularProgress} from "@mui/material";
 import {BASE_URL} from "../baseUrl";
 import {useLocalStorage} from "../hook/useLocalStorage";
 import {useNavigate} from "react-router-dom";
+import Spinner from 'react-bootstrap/Spinner';
 
 const AuthContext = createContext({});
 
@@ -72,6 +72,32 @@ export const AuthProvider = ({ children })=> {
             });
         });
     };
+    const signUp = (username, email, password) => {
+        let data = {
+            'username': username,
+            'email': email,
+            'password': password,
+            'client_id': 'halal-food-client-id',
+            'client_secret': 'halal-food-client-secret',
+            'grant_type': 'password'
+        };
+        return new Promise(function (resolve, reject) {
+            axios.post(`${BASE_URL}/oauth/token`, null, {
+                params: data,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then((response)=> {
+                setUser(response.data.user);
+                setCurrentUser(response.data.user);
+                setSession(response.data.access_token);
+                resolve(response);
+            }).catch((err)=> {
+                console.log(err);
+                reject(err);
+            });
+        });
+    };
 
     const signOut = () => {
         setCurrentUser(null);
@@ -94,6 +120,7 @@ export const AuthProvider = ({ children })=> {
         () => ({
             currentUser,
             signIn,
+            signUp,
             signOut
         }),
         [currentUser]
@@ -102,7 +129,7 @@ export const AuthProvider = ({ children })=> {
     return (
         <AuthContext.Provider value={value}>
             {!loading && children}
-            {loading && <CircularProgress/>}
+            {loading && <Spinner animation='border'/>}
         </AuthContext.Provider>
     );
 }

@@ -11,3 +11,10 @@ export const DLT = (id) => {
         payload: id
     }
 }
+
+export const CLR = (item) => {
+    return {
+        type: "CRL_CART",
+        payload: item
+    }
+}

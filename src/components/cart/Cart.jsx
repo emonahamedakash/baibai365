@@ -3,18 +3,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import { BASE_URL } from '../../baseUrl';
 import './Cart.css'
 import Navbar from '../home/header/Navbar'
-import { DLT } from '../../redux/actions/cartAction';
+import { DLT, CLR } from '../../redux/actions/cartAction';
 
 const Cart = () => {
 const [price, setPrice] = useState();
 
     const getData = useSelector((state)=> state.cartReducer.carts);
-    console.log(getData);
+
+
     const dispatch = useDispatch();
     const delet = (id) =>{
-      console.log(id);
       dispatch(DLT(id));
   }
+  
+  const handleSubmit = (newdata) =>{
+    alert("Order received successfully")
+}
+
   const total = ()=>{
     let price = 0;
     getData.map((ele)=>{
@@ -27,6 +32,7 @@ const [price, setPrice] = useState();
     total();
   },[total]);
 
+ 
   return (
     <div className='container-fluid'>
         <div className='row cartContainer'>
@@ -66,7 +72,7 @@ const [price, setPrice] = useState();
                     <div className='col-md-2'>¥{price}</div>
                   </div>
                 </div>
-                <button onClick={()=>alert("Order Received Successfully")} className='btn btn-primary w-100 mt-5 mb-2'>PROCEED TO CHECKOUT</button>
+                <button onClick={handleSubmit} className='btn btn-primary w-100 mt-5 mb-2'>PROCEED TO CHECKOUT</button>
                 <button className='btn btn-outline-success w-100'>Continue shopping</button>
               </div>
               </div>

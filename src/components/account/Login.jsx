@@ -10,6 +10,7 @@ import { useAuth } from '../../context/AuthContext';
   const [formErrors, setFormErrors]= useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const {signIn} = useAuth();
+  const [successMsg, setMsg] = useState("")
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,6 +27,7 @@ import { useAuth } from '../../context/AuthContext';
     }).catch((error) =>{
       console.log(error)
     })
+    const successMsg = setMsg("Logged in successfully");
   }
 
   useEffect(() => {
@@ -55,7 +57,7 @@ import { useAuth } from '../../context/AuthContext';
         {/* {Object.keys(formErrors).length === 0 && isSubmit ? (
           <div className='alert alert-success' role='alert'>"Logged in successfully"</div>
         ) : (<pre>{JSON.stringify(formValues, undefined, 2)}</pre>)} */}
-        
+        <div className='alert alert-success' role='alert'>{successMsg}</div>
         <div className='row justify-content-center'>
             <div className='col-md-5'>
                 <h2>Login</h2><br/>

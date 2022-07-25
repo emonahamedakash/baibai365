@@ -1,10 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './Register.css'
-import axios from 'axios'
 import Navbar from '../home/header/Navbar'
+import axios from 'axios'
 import { BASE_URL } from '../../baseUrl'
-import {CircularProgress} from "@mui/material"
 
 const Register = () => {
 
@@ -12,6 +11,7 @@ const Register = () => {
   const [formValues, setFormValues]= useState(initialValues);
   const [formErrors, setFormErrors]= useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+
   
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,10 +19,17 @@ const Register = () => {
     console.log(formValues);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormErrors(validate(formValues));
-    setIsSubmit(true);
+          const response = await axios.post(`${BASE_URL}/api/v1/user/register`, JSON.stringify(formValues, undefined, 4),
+          {
+            headers: { 'Content-Type': 'application/json'},
+            withCredentials: false
+          }
+          );
+          console.log(response.data);
+          console.log(response.accessToken);
+          console.log(JSON.stringify(response))
   }
 
   useEffect(() => {
@@ -46,12 +53,7 @@ const Register = () => {
 
 
   }
-  axios.post(`${BASE_URL}/api/v1/user/register`, {
-    params: {
-      "access_token": localStorage.getItem("accessToken")
-    }
-  }
-  )
+
   return (
     <div>
       <Navbar/>
@@ -73,11 +75,11 @@ const Register = () => {
                 /> 
                 <br/><br/>
                 <input
-                  name='phone' 
-                  value={ formValues.phone} 
+                  name='email' 
+                  value={ formValues.email} 
                   onChange={handleChange} 
-                  placeholder='Phone' 
-                  type='tel' 
+                  placeholder='Email' 
+                  type='email' 
                   className='inputField'
                 /> 
                 <br/><br/>

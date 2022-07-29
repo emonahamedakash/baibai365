@@ -36,6 +36,7 @@ const [price, setPrice] = useState();
   return (
     <div className='container-fluid'>
         <div className='row cartContainer'>
+          <h2 style={{textAlign:"center"}}>Cart</h2>
             <div className='col-md-8'>
             {
                 getData.map((e)=>{

@@ -8,7 +8,6 @@ export default function ProductCard(props) {
     return (
         <div className='product-container'>
     <div className='product'>
-        {/* <Link to={`/products/productdetails/${props.id}`}> */}
             <img  onClick={props.onClick} src={props.image} className='img-fluid mx-auto d-block productCardImage' alt="test"/>
 
             <p className='productTitle'>{props.title}</p>

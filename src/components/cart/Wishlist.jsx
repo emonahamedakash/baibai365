@@ -21,7 +21,7 @@ export default function Wishlist() {
   return(
     <div>
       <div className='wishlist container'>
-          
+          <h2 style={{textAlign:"center"}}>Wish List</h2>
             {
               getData.map((e)=>{
                 if(e !== null){

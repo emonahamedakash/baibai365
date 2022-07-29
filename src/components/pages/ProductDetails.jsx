@@ -7,8 +7,11 @@ import ProductCard from '../shop/ProductCard'
 import watch from '../assets/watch.jpg'
 import watch2 from '../assets/watch2.jpg'
 import watch3 from '../assets/watch3.jpg'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import parse from 'html-react-parser';
+import { ADD } from '../../redux/actions/cartAction'
+import { ADDWISH } from '../../redux/actions/wishAction'
+import { useDispatch } from 'react-redux'
 
 const ProductDetails = () => {
     const [images] = useState([watch, watch2, watch3]);
@@ -50,6 +53,18 @@ const ProductDetails = () => {
     const description = product.description;
 
     const imageLink = `${BASE_URL}${product.images[0].imageUrl}`;
+    // from redux
+    const dispatch = useDispatch();
+    const send = (e) =>{
+        dispatch(ADD(e));
+    }
+    const sendWish = (e) =>{
+        dispatch(ADDWISH(e));
+    }
+
+
+
+    const navigate = useNavigate();
 
   return (
     <div className='productDetails'>
@@ -104,8 +119,8 @@ const ProductDetails = () => {
             </div>
             <div className='addButton'>
                 <div className='row'>
-                    <button className='btn btn-warning col-md-4 m-1'>Add to Wishlist</button>
-                    <button className='btn btn-primary col-md-4 m-1'>Add to Cart</button>
+                    <button onClick={sendWish} className='btn btn-warning col-md-4 m-1'>Add to Wishlist</button>
+                    <button onClick={send} className='btn btn-primary col-md-4 m-1'>Add to Cart</button>
                 </div>
             </div>
             </div>
@@ -130,7 +145,10 @@ const ProductDetails = () => {
                         title={relproduct.name}
                         price={relproduct.regularPrice}
                         image={relproduct.images.length>0? `${BASE_URL}${relproduct.images[0].thumbUrl.replace("D:", "")}`:"https://m.media-amazon.com/images/I/61pUul1oDlL._AC_UL320_.jpg"}
-                        
+                        btnFunction= {()=> send(product)}
+                        wishBtnFunction= {()=> sendWish(product)}
+                        onClick={()=>navigate("/products/productdetails", {state: {product: relproduct}})}
+
                     />
                     </div>
                 ))}

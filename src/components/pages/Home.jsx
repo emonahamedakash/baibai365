@@ -48,8 +48,9 @@ export default function Home() {
             <div className="row">
                     {
                         products.map((product)=>{
-                            return <div className='col-md-3'>
-                                        <ProductCard className="col-sm-" id={product.id}
+                            
+                            return    <ProductCard className="col-sm-" 
+                                        id={product.id}
                                         title={product.name}
                                         regularPrice={product.regularPrice}
                                         price={product.salePrice}
@@ -60,7 +61,7 @@ export default function Home() {
                                         />
                                      
                                         
-                                    </div>
+
                                     
                     })
                     }
@@ -91,7 +92,7 @@ export default function Home() {
                     <Link to="/allcategory/category"><button className='btn btn-outline-secondary'>See More</button></Link>
                     </div>
             </div>
-            <h3>Grocery</h3>
+            <h3 style={{textAlign:"center",fontSize:"40px",margin:"10px 0"}}>Grocery</h3>
             <div className="row">
                     {
                         products
@@ -113,7 +114,7 @@ export default function Home() {
                     <Link to="/allcategory/category"><button className='btn btn-outline-secondary'>See More</button></Link>
                     </div>
             </div>
-            <h3>Fashion</h3>
+            <h3 style={{textAlign:"center",fontSize:"40px",margin:"10px 0"}}>Fashion</h3>
             <div className="row">
                     {
                         products
@@ -135,7 +136,7 @@ export default function Home() {
                     <button className='btn btn-outline-secondary'>See More</button>
                     </div>
             </div>
-            <h3>Health & Beauty</h3>
+            <h3 style={{textAlign:"center",fontSize:"40px",margin:"10px 0"}}>Health & Beauty</h3>
             <div className="row">
                     {
                         products

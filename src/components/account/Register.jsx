@@ -7,7 +7,7 @@ import { BASE_URL } from '../../baseUrl'
 
 const Register = () => {
 
-  const initialValues = { username: "", password: "", email: "", firstName: "", lastName: "", roleId: 3};
+  const initialValues = { username: "", email: "", firstName: "", lastName: "", password: "", cpassword: "", roleId: 3};
   const [formValues, setFormValues]= useState(initialValues);
   const [formErrors, setFormErrors]= useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -21,7 +21,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-          const response = await axios.post(`${BASE_URL}/api/v1/user/register`, JSON.stringify(formValues, undefined, 4),
+          const response = await axios.post(`${BASE_URL}/api/v1/user/register`, JSON.stringify(formValues, undefined, 5),
           {
             headers: { 'Content-Type': 'application/json'},
             withCredentials: false
@@ -38,6 +38,7 @@ const Register = () => {
       console.log(formValues);
     }
   },[formErrors])
+
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -48,6 +49,8 @@ const Register = () => {
       errors.username="Password is Required!";
     }else if(values.password < 8){
       errors.password = "Minimum password length 8 characters!";
+    }else if(values.password !== values.cpassword){
+      errors.cpassword = "Password not Matched!";
     }
     return errors;
 
@@ -58,13 +61,28 @@ const Register = () => {
     <div>
       <Navbar/>
         <div className='registerPage'>
-        {Object.keys(formErrors).length === 0 && isSubmit ? (
-          <h3 className='alert alert-success' role='alert'>Registered successfully</h3>
-        ) : (<pre>{JSON.stringify(formValues, undefined, 4)}</pre>)}
         <div className="row justify-content-center">
             <div className='col-md-5'>
                 <h2>Register</h2><br/>
                 <form onSubmit={handleSubmit}>
+                <input 
+                  name='firstName'
+                  value={ formValues.firstName} 
+                  onChange={handleChange} 
+                  placeholder='First name' 
+                  type='text' 
+                  className='inputField'
+                />
+                <br/><br/> 
+                <input 
+                  name='lastName'
+                  value={ formValues.lastName} 
+                  onChange={handleChange} 
+                  placeholder='Last name' 
+                  type='text' 
+                  className='inputField'
+                /> 
+                <br/><br/>
                 <input 
                   name='username'
                   value={ formValues.username} 
@@ -98,24 +116,6 @@ const Register = () => {
                   onChange={handleChange} 
                   placeholder='Confirm Password' 
                   type='password' 
-                  className='inputField'
-                /> 
-                <br/><br/>
-                <input 
-                  name='firstName'
-                  value={ formValues.firstName} 
-                  onChange={handleChange} 
-                  placeholder='First Name' 
-                  type='text' 
-                  className='inputField'
-                /> 
-                <br/><br/>
-                <input 
-                  name='lastName'
-                  value={ formValues.lastName} 
-                  onChange={handleChange} 
-                  placeholder='First Name' 
-                  type='text' 
                   className='inputField'
                 /> 
                 <br/><br/>

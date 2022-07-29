@@ -32,11 +32,9 @@ const AllCategory = () => {
         {
           categories.map((category) =>
           <Link to="/allcategory/category" className='col-md categoryLink categoryCard'>
-          <img className='categoryImg' src='https://baibai365.com/wp-content/uploads/2021/09/IMG_3852-320x320.jpg' alt='categoryLogo'/>
-          {/* <img src={category.image} alt='categoryLogo'/> */}
+          <img className='categoryImg' src={`${BASE_URL}${category.image.thumbUrl}`} alt='categoryLogo'/>
           <h4>{category.name}</h4>
           </Link>
-          
         )
         }
       </div>

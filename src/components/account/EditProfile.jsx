@@ -66,8 +66,6 @@ const EditProfile = (props) => {
                   className='inputField'
                 /> 
                 <br/><br/>
-
-                
                 <input 
                   type='submit'
                   className='btn btn-warning' 

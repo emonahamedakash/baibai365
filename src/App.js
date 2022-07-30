@@ -25,46 +25,41 @@ import PrivateOutlet from "./PrivateOutlet";
 import EditProfile from "./components/account/EditProfile";
 import Cart from "./components/cart/Cart";
 import Error from "./components/pages/Error";
+import AllStore from "./components/category/AllStore";
 
 function App() {
-  let id;
   return (
    <div className="app">
           <Header/>
           <Routes>
             <Route path="/login" element={<PublicOutlet/>}>
                 <Route path="/login" element={<Login />} />
-
             </Route>
                 <Route path="/secure" element={<PrivateOutlet/>}>
                 <Route path="/secure/checkout" element={<Checkout />} />
-
                 <Route path="/secure/profile" element={<Profile />} />
                 <Route path="/secure/profile/edit-profile" element={<EditProfile />} />
-
             </Route>
-
           </Routes>
-
-          {/*Header Link Routes*/}
-          {/*<---Header Link Routs End--->*/}
 
           {/*Navbar Link routes*/}
           <Routes>
               <Route path="/" element={<Navbar />}>
                   <Route index element={<Home/>}/>
                   <Route path="allcategory" element={<AllCategory />} />
+                  <Route path="allstore" element={<AllStore />} />
                   <Route path="products/productdetails" element={<ProductDetails />} />
                   <Route path="campaign" element={<Campaign/>} />
                   <Route path="contact" element={<Contact />} />
                   <Route path="policy" element={<Policy />} />
                   <Route path="seller" element={<Seller />} />
+                  <Route path="allcategory/category" element={<Category />} />
+                  <Route path="allstore" element={<AllStore />} />
               </Route>
           </Routes>
           {/*<---Navbar Link Routs End--->*/} 
           {/*Other Link Routs*/}
           <Routes>
-            <Route path="allcategory/category" element={<Category />} />
             <Route path="vendor-register" element={<VendorRegister />} />
             <Route path="requirements-info" element={<Requirements />} />
             <Route path="terms" element={<Terms />} />

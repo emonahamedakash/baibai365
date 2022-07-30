@@ -1,46 +1,48 @@
-import React from 'react'
-import { Carousel } from 'react-bootstrap'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Carousel } from "react-bootstrap";
+import { BASE_URL } from "../../baseUrl";
 
 export default function Slider() {
-    const slideDetails = [
-                            {
-                                imgsrc:" https://icms-image.slatic.net/images/ims-web/fce658f5-3298-4625-a254-7f3b5417bc8d.jpg",
-                                imgalt: "First slide"
-                            },
-                            {
-                                imgsrc:"https://icms-image.slatic.net/images/ims-web/9f071684-2f65-4df2-bb93-d24878835e04.jpg",
-                                imgalt:"Second slide"
-                            },
-                            {
-                                imgsrc:"https://icms-image.slatic.net/images/ims-web/da1cbb07-5aee-4586-b8fd-b050417a4567.jpg",
-                                imgalt:"Third slide"
-                            }
-                        ]
+  const [banners, setBanners] = useState([]);
+
+  useEffect(() => {
+    fetchBanners().then();
+  }, []);
+
+  const fetchBanners = async () => {
+    await axios
+      .get(`${BASE_URL}/api/v1/banner/list/all`, {
+        params: {
+          access_token: localStorage.getItem("accessToken"),
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        let temp = [];
+        if (response.data.data !== undefined) {
+          response.data.data.forEach((item) => {
+            temp.push(item);
+          });
+          setBanners(temp);
+        }
+      });
+  };
   return (
-    <div className='slider'>
-        <Carousel>
+    <div className="slider">
+      <Carousel>
+        {banners.map((banner) => {
+          return (
             <Carousel.Item>
-                <img
+              <img
                 className="d-block w-100"
-                src={slideDetails[0].imgsrc}
-                alt={slideDetails[0].imgalt}
-                />
+                src={`${BASE_URL}${banner.imageUrl}`}
+                alt="banner image"
+              />
             </Carousel.Item>
-            <Carousel.Item>
-                <img
-                className="d-block w-100"
-                src={slideDetails[1].imgsrc}
-                alt={slideDetails[1].imgalt}
-                />
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                className="d-block w-100"
-                src={slideDetails[2].imgsrc}
-                alt={slideDetails[2].imgalt}
-                />
-            </Carousel.Item>
-        </Carousel>
+          );
+        })}
+      </Carousel>
     </div>
-  )
+  );
 }

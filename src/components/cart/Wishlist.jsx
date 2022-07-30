@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './Wishlist.css'
 import Navbar from '../home/header/Navbar';
 import Error from '../pages/Error';
@@ -18,13 +18,18 @@ export default function Wishlist() {
       dispatch(DLTWISH(id));
   }
 
+  // 👇️ scroll to top on page load
+  useEffect( () => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+})
+// 👆 scroll to top on page load
   return(
     <div>
       <div className='wishlist container'>
           <h2 style={{textAlign:"center"}}>Wish List</h2>
             {
               getData.map((e)=>{
-                if(e !== null){
+                if(e !== undefined){
                   return(
                     <>
                     <div className='wishlistItems'>
@@ -54,11 +59,7 @@ export default function Wishlist() {
                     </>
                   )
                 } else {
-                  return(
-                    <>
-                      <Error/>
-                    </>
-                  )
+                     return <Error/>
                 }
               })
             }

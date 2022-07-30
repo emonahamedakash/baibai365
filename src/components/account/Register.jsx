@@ -32,12 +32,12 @@ const Register = () => {
           console.log(JSON.stringify(response))
   }
 
-  useEffect(() => {
-    console.log(formErrors);
-    if(Object.keys(formErrors).length === 0 && isSubmit){
-      console.log(formValues);
-    }
-  },[formErrors])
+  // useEffect(() => {
+  //   console.log(formErrors);
+  //   if(Object.keys(formErrors).length === 0 && isSubmit){
+  //     console.log(formValues);
+  //   }
+  // },[formErrors])
 
   const validate = (values) => {
     const errors = {};
@@ -52,7 +52,7 @@ const Register = () => {
     }else if(values.password !== values.cpassword){
       errors.cpassword = "Password not Matched!";
     }
-    return errors;
+    return false;
 
 
   }
@@ -64,7 +64,7 @@ const Register = () => {
         <div className="row justify-content-center">
             <div className='col-md-5'>
                 <h2>Register</h2><br/>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={validate && handleSubmit}>
                 <input 
                   name='firstName'
                   value={ formValues.firstName} 

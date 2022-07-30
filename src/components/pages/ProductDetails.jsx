@@ -14,7 +14,7 @@ import { ADDWISH } from '../../redux/actions/wishAction'
 import { useDispatch } from 'react-redux'
 
 const ProductDetails = () => {
-    const [images] = useState([watch, watch2, watch3]);
+    const [images] = useState([]);
     const [largeImageSrc, setLargeImageSrc] = useState(images);
     const [relProducts, setRelProducts] = useState([]);
     
@@ -23,7 +23,13 @@ const ProductDetails = () => {
     const handleImageChange = (imgNo) => {
         setLargeImageSrc(images[imgNo])
     }
+    const parsedes = require('html-react-parser');
 
+    // 👇️ scroll to top on page load
+    useEffect( () => {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    })
+    // 👆 scroll to top on page load
     
     useEffect( () => {
         console.log(product);
@@ -50,7 +56,6 @@ const ProductDetails = () => {
         });
     }
 
-    const description = product.description;
 
     const imageLink = `${BASE_URL}${product.images[0].imageUrl}`;
     // from redux
@@ -68,14 +73,13 @@ const ProductDetails = () => {
 
   return (
     <div className='productDetails'>
-
         <div className='row upperPart'>
             <div className='col-md'>
                 <div className='productImages'>
                     <div className='subImage'>
                         {/* {
-                            images.map((eachImage, index) => (
-                                <button className='subImageButton' key={index} onClick={() => handleImageChange(index)}>
+                            product.images.map((eachImage, index) => (
+                                <button className='subImageButton' onClick={() => handleImageChange(index)}>
                                     <img className='subImageTag' src={eachImage} alt='product'/>
                                 </button>  
                             ))
@@ -91,7 +95,7 @@ const ProductDetails = () => {
                         largeImage: {
                             src: imageLink,
                             width: 1200,
-                            height: 1800
+                            height: 1200
                         }
                     }} />
                     </div>
@@ -99,8 +103,11 @@ const ProductDetails = () => {
             </div>
 
          <div className='col-md'>
-            <h3>{product.name}</h3>
-            <h6>Price: ¥{product.salePrice}</h6>
+            <h2>{product.name}</h2>
+            <p><b>Seller: </b>{product.store.name}</p>
+            <p><b>Manufatured by: </b>{product.manufacturer.name}</p>
+            <h6 style={{color:"gray"}}>Regular Price: ¥<del>{product.regularPrice}</del></h6>
+            <h5 style={{color:"red"}}>Price: ¥{product.salePrice}</h5>
             <div>
                 <h3>Color:</h3>
                 
@@ -131,14 +138,16 @@ const ProductDetails = () => {
         <div className='middlePart'>
             <hr/><br/>
             <h3 className='productTitleMiddlePart'>Product Details of</h3>
-                    { parse(description)}
+                    <div>
+                        { parse(product.description)}
+                        </div>
             </div><hr/>
         <div className='bottomPart'>
             <div className='container'>
             <h3>Related Products</h3>
             <div className='row justify-content-center'>
                 {
-                relProducts.filter(each => each.subCategory.id === product.subCategory.id)
+                relProducts.filter(each => each.subCategory?.id === product.subCategory.id)
                 .map((relproduct)=> (
                     <div className='col-md'>
                         <ProductCard

@@ -1,19 +1,52 @@
+// import React from 'react'
+// import ProductList from './ProductList'
+
+// const Category = (props) => {
+//   return (
+//     <div className='container'>
+//         <div className='row'>
+//             <div className='col-md-3'>
+//                 <button>{props.title}</button>
+//             </div>
+//             <div className='col-md-9'>
+//                 <ProductList/>
+//             </div>
+//         </div>
+//     </div>
+//   )
+// }
+
+// export default Category
+
+
+
+
+
+
+
+
 import React, { useState, useEffect } from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
-import Navbar from '../home/header/Navbar'
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import './Category.css'
 import { BASE_URL } from '../../baseUrl'
 import ProductCard from '../shop/ProductCard'
 
 function Category (props) {
-  const [subCategories, setSubCategories] = useState([]);
+    const [subCategories, setSubCategories] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [subName, setSubName] = useState('')
+
+
+     
+
   useEffect( () => {
       fetchSubCategories().then();
+      fetchProducts().then();
   }, []);
 
   const fetchSubCategories = async ()=> {
-      await axios.get(`${BASE_URL}/api/v1/sub-category/list/1`, {
+      await axios.get(`${BASE_URL}/api/v1/sub-category/list/${categoryId}`, {
           params: {
             "access_token": localStorage.getItem("accessToken")
           }
@@ -22,19 +55,16 @@ function Category (props) {
           let temp = [];
           response.data.data.forEach((item) => {
               temp.push(item);
-              console.log(item.id);
+              console.log(item);
           })
+          if(temp.length>0){
+            setSubName(temp[0].name);
+          }
           setSubCategories(temp);
       });
   }
 
 //products fetching from here
-
-const [products, setProducts] = useState([]);
-    
-    useEffect( () => {
-        fetchProducts().then();
-    }, []);
 
     const fetchProducts = async ()=> {
     await axios.get(`${BASE_URL}/api/v1/product/list/paginated`, {
@@ -47,39 +77,46 @@ const [products, setProducts] = useState([]);
                 response.data.data.content.forEach((item) => {
                     temp.push(item);
                 });
-                setProducts(temp);
             }
+          setProducts(temp);
+
         });
     }
 
-    const handleSubBtn = (subid) =>{
-        console.log(subid)
+    const handleSubBtn = (subName) =>{
+        console.log(subName);
+        setSubName(subName)
+  
     }
+    const {state} = useLocation();
+    const {categoryId} = state;
+    useEffect( () => {
+        console.log(categoryId);
+    }, []);
 
 
     const navigate = useNavigate();
   return (
     <div className='categories'>
-        <div className='row'>
+        <div className='row' style={{padding:"15px"}}>
             <div className='col-md-2'>
             {
-            subCategories.filter(each=>each.category.name === "Fashion")
-            .map((subCategory) =>
+            subCategories.map((subCategory) =>
             <div>
-                
                 <div className='SubcategoryList'>
                 <ul>
                     <li className='list'>
-                        <button onClick={()=>handleSubBtn(subCategory.id)} className="btn btn-primary w-100">{subCategory.name}</button>
+                        <button onClick={()=>handleSubBtn(subCategory.name)} className="btn btn-primary w-100">{subCategory.name}</button>
                     </li>
                 </ul>
                 </div>
             </div>
               )}
+
             </div>
             <div className='col-md-10 row'>
                {
-                products.filter(each=>each.subCategory.id === 1).
+                products.filter((each)=>each.subCategory?.name===subName).
                 map((product)=>
                             <ProductCard className="col-sm-"
                         id={product.id}

@@ -97,7 +97,10 @@ export default function Navbar() {
                 <li className="nav-item">
                   <Link className="nav-link navLink" to="campaign">Campaign</Link>
                 </li>
-                <li className="nav-item dropdown">
+                <li className="nav-item">
+                  <Link className="nav-link navLink" to="allstore">All Store</Link>
+                </li>
+                {/* <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle navLink" to="seller" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Shops
                   </a>
@@ -107,9 +110,9 @@ export default function Navbar() {
                     ))}
                     
                     <li><hr className="dropdown-divider"/></li>
-                    <li><Link className="dropdown-item" to="">See all</Link></li>
+                    <li><Link className="dropdown-item" to="/allshop">See all</Link></li>
                   </ul>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <Link className="nav-link navLink" to="contact">Contact</Link>
                 </li>
@@ -129,7 +132,7 @@ export default function Navbar() {
                     Seller Center
                   </a>
                   <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><Link className="dropdown-item" to="vendor-register">Vendor Registration</Link></li>
+                    <li><a className="dropdown-item" href="http://52.199.215.23:3001/" target='_blank'>Vendor Registration</a></li>
                     <li><Link className="dropdown-item" to="login">Store Manager</Link></li>
                   </ul>
                 </li>

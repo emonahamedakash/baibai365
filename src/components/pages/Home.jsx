@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Link, Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Home.css';
 import { BASE_URL } from '../../baseUrl'
@@ -31,6 +31,7 @@ export default function Home() {
             }
         });
     }
+    //reducer start
     const dispatch = useDispatch();
     const send = (e) =>{
         dispatch(ADD(e));
@@ -38,14 +39,15 @@ export default function Home() {
     const sendWish = (e) =>{
         dispatch(ADDWISH(e));
     }
+    //reducer end
 
     const navigate = useNavigate();
   return (
     <div className='home'>
         <Slider/>
-        <div className="container">
-            <h3 style={{textAlign:"center",fontSize:"40px",margin:"10px 0"}}>Featured Products</h3>
-            <div className="row">
+        <div>
+            <h3 style={{textAlign:"center",fontSize:"40px",margin:"10px"}}>Featured Products</h3>
+            <div className="row mx-auto">
                     {
                         products.map((product)=>{
                             
@@ -73,7 +75,7 @@ export default function Home() {
             <div className="row">
                     {
                         products
-                        .filter(each => each.category.id === 1)
+                        .filter(each => each.category?.id === 1)
                         .map((product)=>
                             <ProductCard className="col-sm-"
                         id={product.id}
@@ -96,7 +98,7 @@ export default function Home() {
             <div className="row">
                     {
                         products
-                        .filter(each => each.category.id === 2)
+                        .filter(each => each.category?.id === 2)
                         .map((product)=>
                             <ProductCard className="col-sm-"
                         id='4903850'
@@ -118,7 +120,7 @@ export default function Home() {
             <div className="row">
                     {
                         products
-                        .filter(each => each.category.id === 3)
+                        .filter(each => each.category?.id === 3)
                         .map((product)=>
                             <ProductCard className="col-sm-"
                         id='4903850'
@@ -140,7 +142,7 @@ export default function Home() {
             <div className="row">
                     {
                         products
-                        .filter(each => each.category.id === 4)
+                        .filter(each => each.category?.id === 4)
                         .map((product)=>
                             <ProductCard className="col-sm-"
                         id='4903850'

@@ -1,6 +1,9 @@
+.categories{
+    background-color: #EAEDED;
+}
 .products{
     display: flex;
-    background-color: #EAEDED;
+
 }
 .list{
     list-style-type: none;

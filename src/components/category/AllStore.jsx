@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './CategoryCard.css'
 import CategoryCard from './CategoryCard'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -8,7 +9,7 @@ export const AllStore = () => {
 
   const [stores, setStores] = useState([]);
 
-   //Category fetching from here
+   //Store fetching from here
     useEffect( () => {
         fetchStores().then();
     }, []);
@@ -28,24 +29,26 @@ export const AllStore = () => {
               setStores(temp);
             });
           }
-    //category fetching end
-    const navigateShop = useNavigate();
+    //Store fetching end
+    const navigateStore = useNavigate();
           
 
   return (
-    <div className='mx-auto' style={{display:"flex"}}>
+    <div className='container'>
+    <div className='row category'>
          {
           stores.map((store) =>{
-          return <div className='row'>
-            <CategoryCard className='col-md-'
+          return <div className='col-sm categoryLink categoryCard'>
+            <CategoryCard
               image={`${BASE_URL}${store.storeLogoThumbnailUrl}`}
               name={store.name}
-              onClick={()=>navigateShop("store", {state: {storeName: store.name}})}
+              onClick={()=>navigateStore("store", {state: {sName: store.name}})}
             />
           </div>
           }
         )
         }
+    </div>
     </div>
   )
 }

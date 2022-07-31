@@ -1,11 +1,11 @@
 import React from 'react'
+import './CategoryCard.css'
 
 const CategoryCard = (props) => {
   return (
+    <div onClick={props.onClick}>
     <div>
-
-    <div style={{width:"300px",height:"350px"}}>
-        <img className='img-fluid' onClick={props.onClick} src={props.image} alt='categoryThumb'/>
+        <img className='categoryImg'  src={props.image} alt='categoryThumb'/>
         <h4>{props.name}</h4>
     </div>
     </div>

@@ -45,13 +45,14 @@ export default function Home() {
   return (
     <div className='home'>
         <Slider/>
-        <div>
+        <div className='container-fluid'>
             <h3 style={{textAlign:"center",fontSize:"40px",margin:"10px"}}>Featured Products</h3>
-            <div className="row mx-auto">
+            <div className="row">
                     {
                         products.map((product)=>{
                             
-                            return    <ProductCard className="col-sm-" 
+                            return   <div  className="col-sm">
+                                 <ProductCard 
                                         id={product.id}
                                         title={product.name}
                                         regularPrice={product.regularPrice}
@@ -61,6 +62,7 @@ export default function Home() {
                                         wishBtnFunction= {()=> sendWish(product)}
                                         onClick={()=>navigate("/products/productdetails", {state: {product: product}})}
                                         />
+                            </div>
                                      
                                         
 
@@ -77,7 +79,8 @@ export default function Home() {
                         products
                         .filter(each => each.category?.id === 1)
                         .map((product)=>
-                            <ProductCard className="col-sm-"
+                        <div  className="col-sm">
+                            <ProductCard className="col-sm"
                         id={product.id}
                         title={product.title}
                         regularPrice={product.regularPrice}
@@ -86,7 +89,7 @@ export default function Home() {
                         btnFunction= {()=> send(product)}
                         onClick={()=>navigate("/products/productdetails", {state: {product: product}})}
                     />
-                    
+                    </div>
                         )
                     }
                     <div className='more'>
@@ -100,7 +103,8 @@ export default function Home() {
                         products
                         .filter(each => each.category?.id === 2)
                         .map((product)=>
-                            <ProductCard className="col-sm-"
+                        <div  className="col-sm">
+                            <ProductCard className="col-sm"
                         id='4903850'
                         title={product.name}
                         regularPrice={product.regularPrice}
@@ -109,7 +113,7 @@ export default function Home() {
                         btnFunction= {()=> send(product)}
                         onClick={()=>navigate("/products/productdetails", {state: {product: product}})}
                     />
-                    
+                    </div>
                         )
                     }
                     <div className='more'>
@@ -122,7 +126,8 @@ export default function Home() {
                         products
                         .filter(each => each.category?.id === 3)
                         .map((product)=>
-                            <ProductCard className="col-sm-"
+                        <div  className="col-sm">
+                            <ProductCard className="col-sm"
                         id='4903850'
                         title={product.name}
                         regularPrice={product.regularPrice}
@@ -131,7 +136,7 @@ export default function Home() {
                         btnFunction= {()=> send(product)}
                         onClick={()=>navigate("/products/productdetails", {state: {product: product}})}
                     />
-                    
+                    </div>
                         )
                     }
                     <div className='more'>
@@ -144,7 +149,8 @@ export default function Home() {
                         products
                         .filter(each => each.category?.id === 4)
                         .map((product)=>
-                            <ProductCard className="col-sm-"
+                        <div  className="col-sm">
+                            <ProductCard className="col-sm"
                         id='4903850'
                         title={product.name}
                         regularPrice={product.regularPrice}
@@ -153,7 +159,7 @@ export default function Home() {
                         btnFunction= {()=> send(product)}
                         onClick={()=>navigate("/products/productdetails", {state: {product: product}})}
                     />
-                    
+                    </div>
                         )
                     }
                     <div className='more'>

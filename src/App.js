@@ -26,6 +26,7 @@ import EditProfile from "./components/account/EditProfile";
 import Cart from "./components/cart/Cart";
 import Error from "./components/pages/Error";
 import AllStore from "./components/category/AllStore";
+import Store from './components/pages/Store'
 
 function App() {
   return (
@@ -54,7 +55,7 @@ function App() {
                   <Route path="policy" element={<Policy />} />
                   <Route path="seller" element={<Seller />} />
                   <Route path="allcategory/category" element={<Category />} />
-                  <Route path="allstore" element={<AllStore />} />
+                  <Route path="allstore/store" element={<Store />} />
               </Route>
           </Routes>
           {/*<---Navbar Link Routs End--->*/} 

@@ -1,30 +1,3 @@
-// import React from 'react'
-// import ProductList from './ProductList'
-
-// const Category = (props) => {
-//   return (
-//     <div className='container'>
-//         <div className='row'>
-//             <div className='col-md-3'>
-//                 <button>{props.title}</button>
-//             </div>
-//             <div className='col-md-9'>
-//                 <ProductList/>
-//             </div>
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default Category
-
-
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react'
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'

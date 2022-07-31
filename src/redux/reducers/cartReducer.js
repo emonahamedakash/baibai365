@@ -18,13 +18,6 @@ export const cartReducer = ( state=INIT_STATE, action) => {
         carts:data
       }
 
-    case "CLR_CART": 
-    const emptyArr = state.carts;
-    emptyArr = [];
-      return {
-        state,
-        carts: emptyArr
-      }
     default:
       return state
   }

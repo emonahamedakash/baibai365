@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import CategoryCard from './CategoryCard'
+import './AllCategory.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { BASE_URL } from '../../baseUrl'
@@ -33,11 +34,12 @@ export const AllCategory = () => {
           
 
   return (
-    <div className='mx-auto' style={{display:"flex"}}>
+    <div className='container'>
+      <div className='row category'>
          {
           categories.map((category) =>{
-          return <div className='row'>
-            <CategoryCard className='col-md-'
+          return <div className='col-sm categoryLink categoryCard'>
+            <CategoryCard 
               image={`${BASE_URL}${category.image.thumbUrl}`}
               name={category.name}
               onClick={()=>navigateCat("category", {state: {categoryId: category.id}})}
@@ -46,6 +48,7 @@ export const AllCategory = () => {
           }
         )
         }
+      </div>
     </div>
   )
 }

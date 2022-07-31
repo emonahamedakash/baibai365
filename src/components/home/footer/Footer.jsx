@@ -31,7 +31,7 @@ export default function Footer() {
                 </div>
                 <div className='col-md-3'>
                     <h3>
-                        Contact Details
+                        Head Office
                     </h3><hr/>
                     <p className='footerptag'>
                     169-0074 Tokyo, Shinjuku Kita Shinjuku 3-4-3 Plaza Kita Shinjuku Building 104<br/>

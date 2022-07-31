@@ -38,8 +38,8 @@ const Orders = () => {
         <thead>
           <tr>
             <th>Order#</th>
-            <th>Name</th>
-            <th>Total</th>
+            <th>Products</th>
+            <th>Total Cost</th>
             <th>Status</th>
           </tr>
         </thead>

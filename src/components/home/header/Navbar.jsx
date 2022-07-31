@@ -80,7 +80,7 @@ export default function Navbar() {
                 <li className="nav-item">
                   <Link className="nav-link navLink" to="allcategory">All Category</Link>
                 </li>
-                <li className="nav-item dropdown">
+                {/* <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle navLink" to="seller" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Brands
                   </a>
@@ -93,6 +93,9 @@ export default function Navbar() {
                     <li><hr className="dropdown-divider"/></li>
                     <li><Link className="dropdown-item" to="">See all</Link></li>
                   </ul>
+                </li> */}
+                <li className="nav-item">
+                  <Link className="nav-link navLink" to="allmanufacturer">All Manufacturer</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link navLink" to="campaign">Campaign</Link>

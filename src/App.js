@@ -27,6 +27,8 @@ import Cart from "./components/cart/Cart";
 import Error from "./components/pages/Error";
 import AllStore from "./components/category/AllStore";
 import Store from './components/pages/Store'
+import AllManufacturer from "./components/category/AllManufacturer";
+import Manufacturer from "./components/pages/Manufacturer";
 
 function App() {
   return (
@@ -49,6 +51,7 @@ function App() {
                   <Route index element={<Home/>}/>
                   <Route path="allcategory" element={<AllCategory />} />
                   <Route path="allstore" element={<AllStore />} />
+                  <Route path="allmanufacturer" element={<AllManufacturer />} />
                   <Route path="products/productdetails" element={<ProductDetails />} />
                   <Route path="campaign" element={<Campaign/>} />
                   <Route path="contact" element={<Contact />} />
@@ -56,6 +59,7 @@ function App() {
                   <Route path="seller" element={<Seller />} />
                   <Route path="allcategory/category" element={<Category />} />
                   <Route path="allstore/store" element={<Store />} />
+                  <Route path="allmanufacturer/manufacturer" element={<Manufacturer />} />
               </Route>
           </Routes>
           {/*<---Navbar Link Routs End--->*/} 

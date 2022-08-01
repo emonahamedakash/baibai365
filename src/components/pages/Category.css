@@ -16,3 +16,8 @@
 .link:hover{
     color: orange;
 }
+.subcategoryList:focus{
+    background-color: orange;
+    outline: none;
+    border: none;
+}

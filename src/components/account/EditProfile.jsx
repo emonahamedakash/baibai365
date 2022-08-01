@@ -1,46 +1,26 @@
 import React,{ useState, useEffect} from 'react'
 import { BASE_URL } from '../../baseUrl'
 import axios from 'axios'
+import { useAuth } from '../../context/AuthContext';
 const EditProfile = (props) => {
-
-  const [users, setUserData] = useState([]);
-    
-  useEffect( () => {
-      fetchUserData().then();
-  }, []);
-
-  const fetchUserData = async ()=> {
-    await axios.get(`${BASE_URL}/oauth/token`, {
-        params: {
-            "access_token": localStorage.getItem("accessToken")
-        }
-    }).then((response)=>{
-            let temp = [];
-            if (response.data.data.content !== undefined) {
-                response.data.data.content.forEach((item) => {
-                    temp.push(item);
-                });
-                setUserData(temp);
-            }
-        });
-    }
+  const { currentUser } = useAuth();
 
   return (
     <div>
         <div className="row">
                 <h2>Edit Profile</h2><br/>
+                <p style={{color:"green",wordSpacing:"10px"}}>Hello, <strong>{currentUser.firstName}👋</strong></p>
                 <form>
-                  <label>{users.username}</label>
                 <input 
                   name='username'
-                  placeholder={users.username} 
+                  placeholder={currentUser.username} 
                   type='text' 
                   className='inputField'
                 /> 
                 <br/><br/>
                 <input
                   name='email' 
-                  placeholder={users.phone} 
+                  placeholder={currentUser.email} 
                   type='email' 
                   className='inputField'
                 /> 

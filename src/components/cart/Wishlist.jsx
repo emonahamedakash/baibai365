@@ -40,7 +40,7 @@ export default function Wishlist() {
                       </button>
                     </div>
                     <div className='col-md-2'>
-                      <img className='wishlistLogo' src={e.images.length>0? `${BASE_URL}${e.images[0].thumbUrl.replace("D:", "")}`:"https://m.media-amazon.com/images/I/61pUul1oDlL._AC_UL320_.jpg"} alt='logo'/>
+                      <img className='wishlistLogo' src={`${BASE_URL}${e.images[0].thumbUrl}`} alt='logo'/>
                     </div>
                     <div className='productSummery col-md-5'>
                       <h5 className='title'>{e.title}</h5>

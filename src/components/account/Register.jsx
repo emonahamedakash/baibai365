@@ -11,7 +11,12 @@ const Register = () => {
   const [formValues, setFormValues]= useState(initialValues);
   const [formErrors, setFormErrors]= useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-
+    // 👇️ scroll to top on page load
+    useEffect( () => {
+      window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+  })
+  // 👆 scroll to top on page load
+  
   
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -48,7 +48,7 @@ const Orders = () => {
           orders.map((order) => {
             return <tr>
                 <td>{order.id}</td>
-                <td>{order.products[0].name},{order.products[1].name}</td>
+                <td>{order.products[0]?.name},{order.products[1]?.name}</td>
                 <td>{order.totalCost}</td>
                 <td>{order.status}</td>
               </tr>

@@ -31,13 +31,11 @@ const ProductDetails = () => {
     })
     // 👆 scroll to top on page load
     
-    useEffect( () => {
-        console.log(product);
-    }, []);
-
     
     useEffect( () => {
         fetchRelProducts().then();
+        console.log(product);
+        document.title=`BaiBai365-${product.title}`;
     }, []);
 
     const fetchRelProducts = async ()=> {
@@ -57,7 +55,7 @@ const ProductDetails = () => {
     }
 
 
-    const imageLink = `${BASE_URL}${product.images[0].imageUrl}`;
+    const imageLink = `${BASE_URL}${product.images[0]?.imageUrl}`;
     // from redux
     const dispatch = useDispatch();
     const send = (e) =>{
@@ -104,24 +102,36 @@ const ProductDetails = () => {
 
          <div className='col-md'>
             <h2>{product.name}</h2>
-            <p><b>Seller: </b>{product.store.name}</p>
-            <p><b>Manufatured by: </b>{product.manufacturer.name}</p>
+            <p><b>Seller: </b>{product.store?.name}</p>
+            <p><b>Manufatured by: </b>{product.manufacturer?.name}</p>
             <h6 style={{color:"gray"}}>Regular Price: ¥<del>{product.regularPrice}</del></h6>
             <h5 style={{color:"red"}}>Price: ¥{product.salePrice}</h5>
-            <div>
+            {/* <div className='varients' >
+                {
+                    product.productVariants.map((varient)=>{
+                        return <>
+                            <p style={{color:"green"}}>Product Variant Id: {varient.id}</p>
+                            {
+                                varient.featureDetails.map((feature)=>{
+                                    return <>
+                                    <p>Feature Details Id: {feature.id}</p>
+                                    <p>Feature Details Name: {feature.name}</p>
+                                    <p>Feature Details Name: {feature.feature.name}</p>
+                                    </>
+                                })
+                            }
+                        </>
+                    })
+                }
+            </div> */}
+            <div className='productVariants'>
                 <h3>Color:</h3>
-                
-                    <button className='btn btn-outline-secondary cpbtn' >Green</button>
-                    {/* <button className='btn btn-outline-secondary cpbtn' >{product.productVariants[1].featureDetails[1].name}</button>
-                    <button className='btn btn-outline-secondary cpbtn' >{product.productVariants[2].featureDetails[1].name}</button> */}
-                
+                <button className='btn btn-outline-secondary cpbtn' >{product.productVariants[1]?.featureDetails[0].name}</button>
             </div>
             <div>
-                <h3>Capacity:</h3>
+                <h3>Product Rank:</h3>
                 <div>
-                    <button className='btn btn-outline-secondary cpbtn' >64GB</button>
-                    {/* <button className='btn btn-outline-secondary cpbtn' >{product.productVariants[0].featureDetails[0].name}</button>
-                    <button className='btn btn-outline-secondary cpbtn' >{product.productVariants[1].featureDetails[0].name}</button> */}
+                    <button className='btn btn-outline-secondary cpbtn' >{product.productVariants[0]?.featureDetails[0].name}</button>
                 </div>
             </div>
             <div className='addButton'>
@@ -137,27 +147,26 @@ const ProductDetails = () => {
 </div>
         <div className='middlePart'>
             <hr/><br/>
-            <h3 className='productTitleMiddlePart'>Product Details of</h3>
-                    <div>
+            <h3 className='productTitleMiddlePart' style={{height:"35px",color:"white",textAlign:'center',backgroundColor:"gray"}}>Product Details of {product.name}</h3>
+                    <div className='container description'>
                         { parse(product.description)}
                         </div>
-            </div><hr/>
+            </div>
         <div className='bottomPart'>
             <div className='container'>
             <h3>Related Products</h3>
             <div className='row justify-content-center'>
                 {
-                relProducts.filter(each => each.subCategory?.id === product.subCategory.id)
+                relProducts.filter(each => each.subCategory?.id === product.subCategory?.id)
                 .map((relproduct)=> (
                     <div className='col-md'>
                         <ProductCard
                         title={relproduct.name}
                         price={relproduct.regularPrice}
-                        image={relproduct.images.length>0? `${BASE_URL}${relproduct.images[0].thumbUrl.replace("D:", "")}`:"https://m.media-amazon.com/images/I/61pUul1oDlL._AC_UL320_.jpg"}
+                        image={relproduct.images.length>0? `${BASE_URL}${relproduct.images[0].thumbUrl.replace("D:", "")}`:"https://us.123rf.com/450wm/pe3check/pe3check1710/pe3check171000054/88673746-no-image-available-sign-internet-web-icon-to-indicate-the-absence-of-image-until-it-will-be-download.jpg?ver=6"}
                         btnFunction= {()=> send(product)}
                         wishBtnFunction= {()=> sendWish(product)}
                         onClick={()=>navigate("/products/productdetails", {state: {product: relproduct}})}
-
                     />
                     </div>
                 ))}

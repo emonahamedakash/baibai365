@@ -11,6 +11,7 @@ function Store(props) {
 
   useEffect(() => {
     fetchProducts().then();
+    document.title = `BaiBai365-${sName}`
   }, []);
 
   //products fetching from here

@@ -16,40 +16,10 @@ export const Profile = () => {
     const {signOut} = useAuth();
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
-    // const routeChange = (path) =>{
-    //     navigate(path);
-    // }
-
-    useEffect( () => {
-        fetchUsers().then();
-    }, []);
-
-    const fetchUsers = async ()=> {
-        await axios.get(`${BASE_URL}/api/v1/user`, {
-            params: {
-                "access_token": localStorage.getItem("accessToken")
-            }
-        }).then((response) => {
-            console.log(response.data);
-            let temp = [];
-            response.data.forEach((item) => {
-                let data = item;
-                temp.push(data);
-                console.log(item.id);
-            })
-            setUsers(temp);
-        });
-    }
+    const { currentUser } = useAuth();
   return (
     <div  className=''>
         <div className='profile container'>
-            {/* <div className='col-3 profile'>
-                {
-                    users.filter(each => each.username === "akash")
-                    .map((user)=>
-                    <h3>Hello, {user.username}</h3>
-                    )
-                } */}
                 <Tab.Container id="list-group-tabs-example" defaultActiveKey="#edit-profile">
                     <Row>
                         <Col sm={3}>

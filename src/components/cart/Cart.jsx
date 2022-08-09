@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../../baseUrl";
 import "./Cart.css";
-import Navbar from "../home/header/Navbar";
 import { DLT, CLR } from "../../redux/actions/cartAction";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
@@ -65,11 +64,11 @@ const Cart = () => {
 
   useEffect(() => {
     total();
+    console.log(getData);
   }, [total]);
 
   return (
     <div className="container-fluid">
-      <Navbar/>
       <div className="row cartContainer">
         <h2 style={{ textAlign: "center" }}>Cart</h2>
         <div className="col-md-8">

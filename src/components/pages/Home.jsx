@@ -8,10 +8,10 @@ import ProductCard from '../shop/ProductCard'
 import { useDispatch } from 'react-redux';
 import { ADD } from '../../redux/actions/cartAction';
 import { ADDWISH } from '../../redux/actions/wishAction';
+import Spinner from '../Spinner';
 
 export default function Home() {
     const [products, setProducts] = useState([]);
-    
     useEffect( () => {
         fetchProducts().then();
     }, []);
@@ -51,7 +51,7 @@ export default function Home() {
                     {
                         products.map((product)=>{
                             
-                            return   <div  className="col-md col-sm-2">
+                            return   <div  className="col-sm">
                                  <ProductCard 
                                         id={product.id}
                                         title={product.name}

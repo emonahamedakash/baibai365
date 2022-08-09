@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
-import Navbar from "../home/header/Navbar";
 import { useAuth } from "../../context/AuthContext";
 
 function Login() {
@@ -34,7 +33,6 @@ function Login() {
 
   useEffect(() => {
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-
     console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
@@ -56,7 +54,6 @@ function Login() {
 
   return (
     <div>
-      <Navbar />
       <div className="loginPage">
         <div className="alert alert-success" role="alert">
           {successMsg}

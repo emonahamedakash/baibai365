@@ -25,28 +25,6 @@ export const AuthProvider = ({ children })=> {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    // const signup = (email, password, fullName) => {
-    //     let data = {
-    //         email: email,
-    //         password: password,
-    //         name: fullName
-    //     }
-    //     return new Promise(function (resolve, reject) {
-    //         axios.post(`${BASE_URL}/register` , data).then((response)=> {
-    //             console.log(response.data);
-    //         }).catch((err)=> {
-    //             console.log(err);
-    //         });
-    //         // createUserWithEmailAndPassword(email, password).then((ref) => {
-    //         //     ref.user.updateProfile({
-    //         //         displayName: fullName,
-    //         //     });
-    //         //     resolve(ref);
-    //         // })
-    //         //     .catch((error) => reject(error));
-    //     });
-    // };
-
     const signIn = (email, password) => {
         let data = {
             'username': email,

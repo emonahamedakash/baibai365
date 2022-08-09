@@ -106,7 +106,7 @@ const ProductDetails = () => {
             <p><b>Manufatured by: </b>{product.manufacturer?.name}</p>
             <h6 style={{color:"gray"}}>Regular Price: ¥<del>{product.regularPrice}</del></h6>
             <h5 style={{color:"red"}}>Price: ¥{product.salePrice}</h5>
-            {/* <div className='varients' >
+            <div className='varients' >
                 {
                     product.productVariants.map((varient)=>{
                         return <>
@@ -123,8 +123,8 @@ const ProductDetails = () => {
                         </>
                     })
                 }
-            </div> */}
-            <div className='productVariants'>
+            </div>
+            {/* <div className='productVariants'>
                 <h3>Color:</h3>
                 <button className='btn btn-outline-secondary cpbtn' >{product.productVariants[1]?.featureDetails[0].name}</button>
             </div>
@@ -133,7 +133,7 @@ const ProductDetails = () => {
                 <div>
                     <button className='btn btn-outline-secondary cpbtn' >{product.productVariants[0]?.featureDetails[0].name}</button>
                 </div>
-            </div>
+            </div> */}
             <div className='addButton'>
                 <div className='row'>
                     <button onClick={sendWish} className='btn btn-warning col-md-4 m-1'>Add to Wishlist</button>

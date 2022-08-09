@@ -29,11 +29,13 @@ import AllStore from "./components/category/AllStore";
 import Store from './components/pages/Store'
 import AllManufacturer from "./components/category/AllManufacturer";
 import Manufacturer from "./components/pages/Manufacturer";
+import Spinner from './components/Spinner'
 
 function App() {
   return (
    <div className="app">
           <Header/>
+		  <Navbar/>
           <Routes>
             <Route path="/login" element={<PublicOutlet/>}>
                 <Route path="/login" element={<Login />} />
@@ -47,8 +49,7 @@ function App() {
 
           {/*Navbar Link routes*/}
           <Routes>
-              <Route path="/" element={<Navbar />}>
-                  <Route index element={<Home/>}/>
+                  <Route path="/" element={<Home/>}/>
                   <Route path="allcategory" element={<AllCategory />} />
                   <Route path="allstore" element={<AllStore />} />
                   <Route path="allmanufacturer" element={<AllManufacturer />} />
@@ -60,7 +61,6 @@ function App() {
                   <Route path="allcategory/category" element={<Category />} />
                   <Route path="allstore/store" element={<Store />} />
                   <Route path="allmanufacturer/manufacturer" element={<Manufacturer />} />
-              </Route>
           </Routes>
           {/*<---Navbar Link Routs End--->*/} 
           {/*Other Link Routs*/}
@@ -72,6 +72,7 @@ function App() {
             <Route path="wishlist" element={<Wishlist />} />
             <Route path="error" element={<Error/>} />
             <Route path="/register" element={<Register />} />
+            <Route path="spinner" element={<Spinner/>}/>
           </Routes>
           {/*<---Other Link Routs End--->*/}
           <Footer/>
